@@ -1,0 +1,7 @@
+{
+    "optimizer": {
+        "caveman": "full",
+        "rtk": true,
+        "ponytail": "lite"
+    }
+}

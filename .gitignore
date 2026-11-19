@@ -1,0 +1,21 @@
+# Secrets & credentials
+auth.json
+*-accounts.json
+crashes.json
+*.env
+.env.*
+
+# Session history & runtime state
+sessions/
+memory/
+git/
+*.log
+
+# Caches & temporary files
+.cache/
+node_modules/
+*.tmp
+
+# Package installations & generated data
+packages/
+*.pid
