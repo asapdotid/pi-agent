@@ -1,6 +1,6 @@
 {
-  "lastChangelogVersion": "1.5.2",
-  "theme": "system",
+  "lastChangelogVersion": "1.6.0",
+  "theme": "pix-nord",
   "collapseChangelog": true,
   "enableInstallTelemetry": false,
   "defaultProvider": "github-copilot",
@@ -20,17 +20,18 @@
     "maxRetries": 3
   },
   "packages": [
-    "npm:pi-powerline-footer",
     "npm:@xynogen/pix-optimizer",
     "git:github.com/tianrendong/pi-cp",
     "npm:pi-markdown-preview",
     "npm:pi-web-access",
     "npm:@gotgenes/pi-permission-system",
-    "npm:pi-cache-optimizer",
     "npm:@petechu/pi-extension-toggle",
     "npm:pi-packages-manager",
     "npm:pi-antigravity",
-    "npm:@heyhuynhgiabuu/pi-pretty"
+    "npm:@heyhuynhgiabuu/pi-pretty",
+    "npm:@xynogen/pix-themes",
+    "npm:@xynogen/pix-data",
+    "npm:pi-cache-optimizer"
   ],
   "shellCommandPrefix": "shopt -x expand_aliases\neval \"$(grep '^aliase ' ~/.config/zsh/.zshrc)\"",
   "quietStartup": true,
@@ -41,7 +42,7 @@
     "{\"source\":\"npm:@gotgenes/pi-permission-system\",\"scope\":\"user\"}": "42.2.0",
     "{\"source\":\"npm:@petechu/pi-extension-toggle\",\"scope\":\"user\"}": "0.2.0",
     "{\"source\":\"npm:pi-packages-manager\",\"scope\":\"user\"}": "1.4.1",
-    "{\"source\":\"npm:@heyhuynhgiabuu/pi-pretty\",\"scope\":\"user\"}": "0.10.0",
-    "{\"source\":\"npm:pi-cache-optimizer\",\"scope\":\"user\"}": "2.10.6"
+    "{\"source\":\"npm:@heyhuynhgiabuu/pi-pretty\",\"scope\":\"user\"}": "0.10.2",
+    "{\"source\":\"npm:pi-cache-optimizer\",\"scope\":\"user\"}": "2.10.7"
   }
 }

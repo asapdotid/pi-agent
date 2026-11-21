@@ -1,7 +1,13 @@
 {
-    "optimizer": {
-        "caveman": "full",
-        "rtk": true,
-        "ponytail": "lite"
+  "optimizer": {
+    "caveman": "full",
+    "rtk": "on",
+    "ponytail": "full"
+  },
+  "$version": 1,
+  "pretty": {
+    "footer": {
+      "mode": true
     }
+  }
 }

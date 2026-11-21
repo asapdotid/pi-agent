@@ -19,3 +19,5 @@ node_modules/
 # Package installations & generated data
 packages/
 *.pid
+
+pi-cache-optimizer-stats.d/
