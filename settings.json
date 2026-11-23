@@ -24,14 +24,15 @@
     "git:github.com/tianrendong/pi-cp",
     "npm:pi-markdown-preview",
     "npm:pi-web-access",
-    "npm:@gotgenes/pi-permission-system",
     "npm:pi-packages-manager",
     "npm:pi-antigravity",
     "npm:@heyhuynhgiabuu/pi-pretty",
     "npm:@xynogen/pix-themes",
     "npm:@xynogen/pix-data",
     "npm:pi-cache-optimizer",
-    "git:git@github.com:asapdotid/pi-input-revamp.git"
+    "git:git@github.com:asapdotid/pi-input-revamp.git",
+    "npm:@xynogen/pix-models",
+    "npm:@xynogen/pix-gate"
   ],
   "shellCommandPrefix": "shopt -x expand_aliases\neval \"$(grep '^aliase ' ~/.config/zsh/.zshrc)\"",
   "quietStartup": true,
@@ -43,7 +44,7 @@
     "{\"source\":\"npm:@petechu/pi-extension-toggle\",\"scope\":\"user\"}": "0.2.0",
     "{\"source\":\"npm:pi-packages-manager\",\"scope\":\"user\"}": "1.4.1",
     "{\"source\":\"npm:@heyhuynhgiabuu/pi-pretty\",\"scope\":\"user\"}": "0.10.2",
-    "{\"source\":\"npm:pi-cache-optimizer\",\"scope\":\"user\"}": "2.10.7",
+    "{\"source\":\"npm:pi-cache-optimizer\",\"scope\":\"user\"}": "2.10.8",
     "{\"source\":\"npm:@nerisma/pi-input-revamp\",\"scope\":\"user\"}": "1.2.0",
     "{\"source\":\"npm:@pi-kaush/pi-welcome-screen\",\"scope\":\"user\"}": "0.1.13",
     "{\"source\":\"git:git@github.com:asapdotid/pi-input-revamp.git\",\"scope\":\"user\"}": "1.2.0"

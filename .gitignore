@@ -2,6 +2,7 @@
 auth.json
 *-accounts.json
 crashes.json
+trust.json
 *.env
 .env.*
 
