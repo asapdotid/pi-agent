@@ -1890,7 +1890,7 @@
     ],
     "lastModified": 1795182873000,
     "etag": "W/\"5fcc814c5c7ac2113eb1f6e613a4664a\"",
-    "checkedAt": 1795247056157
+    "checkedAt": 1795261956280
   },
   "google": {
     "models": [
@@ -2985,7 +2985,7 @@
     ],
     "lastModified": 1795080798000,
     "etag": "W/\"66f2e2d9ceec190bf27e449382923d43\"",
-    "checkedAt": 1795247056159
+    "checkedAt": 1795261956289
   },
   "antigravity": {
     "models": [
@@ -3268,16 +3268,27 @@
           }
         ],
         "routing": {
-          "claude-sonnet-4-6": {
-            "off": "claude-sonnet-4-6",
+          "gemini-4-hydrogen-sonar": {
+            "off": "gemini-4-hydrogen-sonar",
             "routing": {
-              "minimal": "claude-sonnet-4-6",
-              "low": "claude-sonnet-4-6",
-              "medium": "claude-sonnet-4-6",
-              "high": "claude-sonnet-4-6",
-              "xhigh": "claude-sonnet-4-6"
+              "minimal": "gemini-4-hydrogen-sonar",
+              "low": "gemini-4-hydrogen-sonar",
+              "medium": "gemini-4-hydrogen-sonar",
+              "high": "gemini-4-hydrogen-sonar",
+              "xhigh": "gemini-4-hydrogen-sonar"
             },
-            "defaultRequestId": "claude-sonnet-4-6"
+            "defaultRequestId": "gemini-4-hydrogen-sonar"
+          },
+          "claude-opus-4-6": {
+            "off": "claude-opus-4-6-thinking",
+            "routing": {
+              "minimal": "claude-opus-4-6-thinking",
+              "low": "claude-opus-4-6-thinking",
+              "medium": "claude-opus-4-6-thinking",
+              "high": "claude-opus-4-6-thinking",
+              "xhigh": "claude-opus-4-6-thinking"
+            },
+            "defaultRequestId": "claude-opus-4-6-thinking"
           },
           "gemini-3.8-flash": {
             "off": "gemini-3.8-flash-low",
@@ -3290,17 +3301,6 @@
             },
             "defaultRequestId": "gemini-3.8-flash-low"
           },
-          "gemini-4-hydrogen-sonar": {
-            "off": "gemini-4-hydrogen-sonar",
-            "routing": {
-              "minimal": "gemini-4-hydrogen-sonar",
-              "low": "gemini-4-hydrogen-sonar",
-              "medium": "gemini-4-hydrogen-sonar",
-              "high": "gemini-4-hydrogen-sonar",
-              "xhigh": "gemini-4-hydrogen-sonar"
-            },
-            "defaultRequestId": "gemini-4-hydrogen-sonar"
-          },
           "gpt-oss-120b": {
             "off": "gpt-oss-120b-medium",
             "routing": {
@@ -3312,20 +3312,20 @@
             },
             "defaultRequestId": "gpt-oss-120b-medium"
           },
-          "claude-opus-4-6": {
-            "off": "claude-opus-4-6-thinking",
+          "claude-sonnet-4-6": {
+            "off": "claude-sonnet-4-6",
             "routing": {
-              "minimal": "claude-opus-4-6-thinking",
-              "low": "claude-opus-4-6-thinking",
-              "medium": "claude-opus-4-6-thinking",
-              "high": "claude-opus-4-6-thinking",
-              "xhigh": "claude-opus-4-6-thinking"
+              "minimal": "claude-sonnet-4-6",
+              "low": "claude-sonnet-4-6",
+              "medium": "claude-sonnet-4-6",
+              "high": "claude-sonnet-4-6",
+              "xhigh": "claude-sonnet-4-6"
             },
-            "defaultRequestId": "claude-opus-4-6-thinking"
+            "defaultRequestId": "claude-sonnet-4-6"
           }
         }
       },
-      "checkedAt": 1795247056931,
+      "checkedAt": 1795261956970,
       "modelEnums": {
         "gemini-3.8-flash-low": "MODEL_PLACEHOLDER_M320",
         "gemini-3.5-flash-lite": "MODEL_PLACEHOLDER_M198",
