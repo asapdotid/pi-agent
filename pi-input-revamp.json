@@ -1,33 +1,9 @@
 {
   "layout": {
-    "topLeft": [
-      "agent",
-      "model",
-      "thinking-level",
-      "cwd",
-      "duration",
-      "tools",
-      "tok"
-    ],
-    "topRight": [
-      "session-label",
-      "ctx-percent",
-      "ctx-tokens-full",
-      "session-cost",
-      "session-out",
-      "session-hit",
-      "session-miss"
-    ],
-    "bottomLeft": [],
-    "bottomRight": [
-      "turn",
-      "turn-duration",
-      "turn-cost",
-      "turn-out",
-      "turn-hit",
-      "ext:pix-optimizer",
-      "turn-miss"
-    ]
+    "topLeft": ["agent", "model", "thinking-level", "cwd", "duration", "tools", "tok"],
+    "topRight": ["session-label", "ctx-percent", "ctx-tokens-full", "session-cost", "session-out", "session-hit", "session-miss"],
+    "bottomLeft": ["git-branch", "git-status"],
+    "bottomRight": ["turn", "turn-duration", "turn-cost", "turn-out", "turn-hit", "ext:pix-optimizer", "turn-miss"]
   },
   "animations": {
     "typingPulse": true,

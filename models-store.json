@@ -1890,7 +1890,7 @@
     ],
     "lastModified": 1795182873000,
     "etag": "W/\"5fcc814c5c7ac2113eb1f6e613a4664a\"",
-    "checkedAt": 1795434714048
+    "checkedAt": 1795573168830
   },
   "google": {
     "models": [
@@ -1964,39 +1964,6 @@
         },
         "contextWindow": 1048576,
         "maxTokens": 65536,
-        "inputLimits": {
-          "maxRequestBytes": 20971520,
-          "images": {
-            "maxPerRequest": 3600,
-            "resize": {
-              "maxWidth": 2000,
-              "maxHeight": 2000,
-              "maxBytes": 4718592,
-              "jpegQuality": 80
-            }
-          }
-        },
-        "type": "chat"
-      },
-      {
-        "id": "gemini-2.5-computer-use-preview-10-2025",
-        "name": "Gemini 2.5 Computer Use Preview 10-2025",
-        "api": "google-generative-ai",
-        "provider": "google",
-        "baseUrl": "https://generativelanguage.googleapis.com/v1beta",
-        "reasoning": true,
-        "input": [
-          "text",
-          "image"
-        ],
-        "cost": {
-          "input": 1.25,
-          "output": 10,
-          "cacheRead": 0,
-          "cacheWrite": 0
-        },
-        "contextWindow": 128000,
-        "maxTokens": 64000,
         "inputLimits": {
           "maxRequestBytes": 20971520,
           "images": {
@@ -2164,48 +2131,6 @@
       {
         "id": "gemini-3.1-flash-lite",
         "name": "Gemini 3.1 Flash Lite",
-        "api": "google-generative-ai",
-        "provider": "google",
-        "baseUrl": "https://generativelanguage.googleapis.com/v1beta",
-        "reasoning": true,
-        "input": [
-          "text",
-          "image"
-        ],
-        "cost": {
-          "input": 0.25,
-          "output": 1.5,
-          "cacheRead": 0.025,
-          "cacheWrite": 0
-        },
-        "contextWindow": 1048576,
-        "maxTokens": 65536,
-        "thinkingLevelMap": {
-          "off": null,
-          "minimal": "minimal",
-          "low": "low",
-          "medium": "medium",
-          "high": "high",
-          "xhigh": null,
-          "max": null
-        },
-        "inputLimits": {
-          "maxRequestBytes": 20971520,
-          "images": {
-            "maxPerRequest": 3600,
-            "resize": {
-              "maxWidth": 2000,
-              "maxHeight": 2000,
-              "maxBytes": 4718592,
-              "jpegQuality": 80
-            }
-          }
-        },
-        "type": "chat"
-      },
-      {
-        "id": "gemini-3.1-flash-lite-preview",
-        "name": "Gemini 3.1 Flash Lite Preview",
         "api": "google-generative-ai",
         "provider": "google",
         "baseUrl": "https://generativelanguage.googleapis.com/v1beta",
@@ -2983,9 +2908,9 @@
         "type": "chat"
       }
     ],
-    "lastModified": 1795080798000,
-    "etag": "W/\"66f2e2d9ceec190bf27e449382923d43\"",
-    "checkedAt": 1795434714038
+    "lastModified": 1795526524000,
+    "etag": "W/\"430f47cc3730962787ad8f9f5b38734f\"",
+    "checkedAt": 1795573168832
   },
   "antigravity": {
     "models": [
@@ -3077,6 +3002,35 @@
         "baseUrl": "https://daily-cloudcode-pa.googleapis.com"
       },
       {
+        "id": "gemini-4-hydrogen",
+        "name": "Gemini 4 Hydrogen (Antigravity)",
+        "reasoning": true,
+        "thinkingLevelMap": {
+          "off": null,
+          "minimal": null,
+          "low": "low",
+          "medium": "medium",
+          "high": "high",
+          "xhigh": "xhigh",
+          "max": null
+        },
+        "input": [
+          "text",
+          "image"
+        ],
+        "cost": {
+          "input": 1.5,
+          "output": 7.5,
+          "cacheRead": 0.075,
+          "cacheWrite": 1.5
+        },
+        "contextWindow": 1048576,
+        "maxTokens": 262144,
+        "api": "antigravity-api",
+        "provider": "antigravity",
+        "baseUrl": "https://daily-cloudcode-pa.googleapis.com"
+      },
+      {
         "id": "gemini-4-hydrogen-sonar",
         "name": "Gemini 4 Hydrogen Sonar (Antigravity)",
         "reasoning": true,
@@ -3101,6 +3055,35 @@
         },
         "contextWindow": 1048576,
         "maxTokens": 65536,
+        "api": "antigravity-api",
+        "provider": "antigravity",
+        "baseUrl": "https://daily-cloudcode-pa.googleapis.com"
+      },
+      {
+        "id": "gemini-4-hydrogen-tiered",
+        "name": "Gemini 4 Hydrogen (Antigravity)",
+        "reasoning": true,
+        "thinkingLevelMap": {
+          "off": null,
+          "minimal": null,
+          "low": null,
+          "medium": null,
+          "high": "high",
+          "xhigh": "xhigh",
+          "max": null
+        },
+        "input": [
+          "text",
+          "image"
+        ],
+        "cost": {
+          "input": 0.75,
+          "output": 3.75,
+          "cacheRead": 0.075,
+          "cacheWrite": 0.75
+        },
+        "contextWindow": 1048576,
+        "maxTokens": 262144,
         "api": "antigravity-api",
         "provider": "antigravity",
         "baseUrl": "https://daily-cloudcode-pa.googleapis.com"
@@ -3216,6 +3199,32 @@
             "maxTokens": 64000
           },
           {
+            "id": "gemini-4-hydrogen",
+            "name": "Gemini 4 Hydrogen (Antigravity)",
+            "reasoning": true,
+            "thinkingLevelMap": {
+              "off": null,
+              "minimal": null,
+              "low": "low",
+              "medium": "medium",
+              "high": "high",
+              "xhigh": "xhigh",
+              "max": null
+            },
+            "input": [
+              "text",
+              "image"
+            ],
+            "cost": {
+              "input": 1.5,
+              "output": 7.5,
+              "cacheRead": 0.075,
+              "cacheWrite": 1.5
+            },
+            "contextWindow": 1048576,
+            "maxTokens": 262144
+          },
+          {
             "id": "gemini-4-hydrogen-sonar",
             "name": "Gemini 4 Hydrogen Sonar (Antigravity)",
             "reasoning": true,
@@ -3240,6 +3249,32 @@
             },
             "contextWindow": 1048576,
             "maxTokens": 65536
+          },
+          {
+            "id": "gemini-4-hydrogen-tiered",
+            "name": "Gemini 4 Hydrogen (Antigravity)",
+            "reasoning": true,
+            "thinkingLevelMap": {
+              "off": null,
+              "minimal": null,
+              "low": null,
+              "medium": null,
+              "high": "high",
+              "xhigh": "xhigh",
+              "max": null
+            },
+            "input": [
+              "text",
+              "image"
+            ],
+            "cost": {
+              "input": 0.75,
+              "output": 3.75,
+              "cacheRead": 0.075,
+              "cacheWrite": 0.75
+            },
+            "contextWindow": 1048576,
+            "maxTokens": 262144
           },
           {
             "id": "gpt-oss-120b",
@@ -3268,6 +3303,28 @@
           }
         ],
         "routing": {
+          "gemini-4-hydrogen-sonar": {
+            "off": "gemini-4-hydrogen-sonar",
+            "routing": {
+              "minimal": "gemini-4-hydrogen-sonar",
+              "low": "gemini-4-hydrogen-sonar",
+              "medium": "gemini-4-hydrogen-sonar",
+              "high": "gemini-4-hydrogen-sonar",
+              "xhigh": "gemini-4-hydrogen-sonar"
+            },
+            "defaultRequestId": "gemini-4-hydrogen-sonar"
+          },
+          "gemini-4-hydrogen-tiered": {
+            "off": "gemini-4-hydrogen-tiered-high",
+            "routing": {
+              "minimal": "gemini-4-hydrogen-tiered-high",
+              "low": "gemini-4-hydrogen-tiered-high",
+              "medium": "gemini-4-hydrogen-tiered-high",
+              "high": "gemini-4-hydrogen-tiered-high",
+              "xhigh": "gemini-4-hydrogen-tiered-xhigh"
+            },
+            "defaultRequestId": "gemini-4-hydrogen-tiered-high"
+          },
           "gemini-3.8-flash": {
             "off": "gemini-3.8-flash-low",
             "routing": {
@@ -3290,27 +3347,16 @@
             },
             "defaultRequestId": "gpt-oss-120b-medium"
           },
-          "gemini-4-hydrogen-sonar": {
-            "off": "gemini-4-hydrogen-sonar",
+          "gemini-4-hydrogen": {
+            "off": "gemini-4-hydrogen-low",
             "routing": {
-              "minimal": "gemini-4-hydrogen-sonar",
-              "low": "gemini-4-hydrogen-sonar",
-              "medium": "gemini-4-hydrogen-sonar",
-              "high": "gemini-4-hydrogen-sonar",
-              "xhigh": "gemini-4-hydrogen-sonar"
+              "minimal": "gemini-4-hydrogen-low",
+              "low": "gemini-4-hydrogen-low",
+              "medium": "gemini-4-hydrogen-medium",
+              "high": "gemini-4-hydrogen-high",
+              "xhigh": "gemini-4-hydrogen-xhigh"
             },
-            "defaultRequestId": "gemini-4-hydrogen-sonar"
-          },
-          "claude-sonnet-4-6": {
-            "off": "claude-sonnet-4-6",
-            "routing": {
-              "minimal": "claude-sonnet-4-6",
-              "low": "claude-sonnet-4-6",
-              "medium": "claude-sonnet-4-6",
-              "high": "claude-sonnet-4-6",
-              "xhigh": "claude-sonnet-4-6"
-            },
-            "defaultRequestId": "claude-sonnet-4-6"
+            "defaultRequestId": "gemini-4-hydrogen-low"
           },
           "claude-opus-4-6": {
             "off": "claude-opus-4-6-thinking",
@@ -3322,10 +3368,21 @@
               "xhigh": "claude-opus-4-6-thinking"
             },
             "defaultRequestId": "claude-opus-4-6-thinking"
+          },
+          "claude-sonnet-4-6": {
+            "off": "claude-sonnet-4-6",
+            "routing": {
+              "minimal": "claude-sonnet-4-6",
+              "low": "claude-sonnet-4-6",
+              "medium": "claude-sonnet-4-6",
+              "high": "claude-sonnet-4-6",
+              "xhigh": "claude-sonnet-4-6"
+            },
+            "defaultRequestId": "claude-sonnet-4-6"
           }
         }
       },
-      "checkedAt": 1795434714952,
+      "checkedAt": 1795573169802,
       "modelEnums": {
         "gemini-3.8-flash-low": "MODEL_PLACEHOLDER_M320",
         "gemini-3.5-flash-lite": "MODEL_PLACEHOLDER_M198",
@@ -3353,7 +3410,13 @@
         "gemini-4-carbon-disabled": "MODEL_PLACEHOLDER_M670",
         "gemini-4-hydrogen-disabled": "MODEL_PLACEHOLDER_M529",
         "gemini-4-neon-disabled": "MODEL_PLACEHOLDER_M536",
-        "gemini-4-hydrogen-sonar": "MODEL_PLACEHOLDER_M578"
+        "gemini-4-hydrogen-sonar": "MODEL_PLACEHOLDER_M578",
+        "gemini-4-hydrogen-tiered-high": "MODEL_PLACEHOLDER_M530",
+        "gemini-4-hydrogen-tiered-xhigh": "MODEL_PLACEHOLDER_M531",
+        "gemini-4-hydrogen-medium": "MODEL_PLACEHOLDER_M526",
+        "gemini-4-hydrogen-xhigh": "MODEL_PLACEHOLDER_M528",
+        "gemini-4-hydrogen-low": "MODEL_PLACEHOLDER_M527",
+        "gemini-4-hydrogen-high": "MODEL_PLACEHOLDER_M525"
       },
       "schemaVersion": 2,
       "credentialKey": "c682345615fdb8c4f4b8023642609e330b470b65b0b8f7426e05079cc5ef2416"
