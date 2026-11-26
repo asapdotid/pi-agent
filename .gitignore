@@ -22,3 +22,4 @@ packages/
 *.pid
 
 pi-cache-optimizer-stats.d/
+antigravity-auth-vault/

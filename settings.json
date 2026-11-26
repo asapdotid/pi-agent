@@ -26,7 +26,8 @@
     "npm:@xynogen/pix-themes",
     "npm:@xynogen/pix-hunk",
     "npm:@xynogen/pix-env",
-    "npm:@xynogen/pix-search"
+    "npm:@xynogen/pix-search",
+    "npm:pi-antigravity"
   ],
   "shellCommandPrefix": "shopt -x expand_aliases\neval \"$(grep '^aliase ' ~/.config/zsh/.zshrc)\"",
   "quietStartup": true,
