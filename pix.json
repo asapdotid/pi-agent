@@ -1,13 +1,25 @@
 {
   "optimizer": {
     "caveman": "full",
-    "rtk": "on",
     "ponytail": "full"
   },
   "$version": 1,
-  "pretty": {
-    "footer": {
-      "mode": true
+  "notify": {
+    "sound": "message"
+  },
+  "edit": {
+    "rejectNewSyntaxErrors": true
+  },
+  "collapse": {
+    "enabled": true,
+    "delaySec": 10,
+    "tools": {
+      "bash": true,
+      "read": true,
+      "write": true,
+      "edit": true,
+      "find": true,
+      "grep": true
     }
   }
 }

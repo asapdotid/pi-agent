@@ -1,6 +1,6 @@
 {
-  "lastChangelogVersion": "1.6.0",
-  "theme": "pix-nord",
+  "lastChangelogVersion": "1.6.1",
+  "theme": "pix-monokai-pro",
   "collapseChangelog": true,
   "enableInstallTelemetry": false,
   "defaultProvider": "github-copilot",
@@ -20,19 +20,13 @@
     "maxRetries": 3
   },
   "packages": [
-    "npm:@xynogen/pix-optimizer",
-    "git:github.com/tianrendong/pi-cp",
-    "npm:pi-markdown-preview",
-    "npm:pi-web-access",
     "npm:pi-packages-manager",
-    "npm:pi-antigravity",
-    "npm:@heyhuynhgiabuu/pi-pretty",
-    "npm:@xynogen/pix-themes",
-    "npm:@xynogen/pix-data",
-    "npm:pi-cache-optimizer",
     "git:git@github.com:asapdotid/pi-input-revamp.git",
-    "npm:@xynogen/pix-models",
-    "npm:@xynogen/pix-gate"
+    "npm:@xynogen/pix-core",
+    "npm:@xynogen/pix-themes",
+    "npm:@xynogen/pix-hunk",
+    "npm:@xynogen/pix-env",
+    "npm:@xynogen/pix-search"
   ],
   "shellCommandPrefix": "shopt -x expand_aliases\neval \"$(grep '^aliase ' ~/.config/zsh/.zshrc)\"",
   "quietStartup": true,
@@ -49,14 +43,5 @@
     "{\"source\":\"npm:@pi-kaush/pi-welcome-screen\",\"scope\":\"user\"}": "0.1.13",
     "{\"source\":\"git:git@github.com:asapdotid/pi-input-revamp.git\",\"scope\":\"user\"}": "1.2.0"
   },
-  "showLastPrompt": true,
-  "powerline": {
-    "preset": "default",
-    "separator": "chevron",
-    "placement": "above",
-    "welcome": true,
-    "git": {
-      "hostIcon": true
-    }
-  }
+  "showLastPrompt": true
 }

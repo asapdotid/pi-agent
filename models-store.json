@@ -32,9 +32,9 @@
           "supportsMidConvoSystemMessages": true
         },
         "thinkingLevelMap": {
-          "off": null,
           "xhigh": "xhigh",
-          "max": "max"
+          "max": "max",
+          "off": null
         },
         "inputLimits": {
           "images": {
@@ -79,9 +79,9 @@
           "supportsMidConvoSystemMessages": true
         },
         "thinkingLevelMap": {
-          "off": null,
           "xhigh": "xhigh",
-          "max": "max"
+          "max": "max",
+          "off": null
         },
         "inputLimits": {
           "images": {
@@ -126,9 +126,9 @@
           "supportsMidConvoSystemMessages": true
         },
         "thinkingLevelMap": {
-          "off": null,
           "xhigh": "xhigh",
-          "max": "max"
+          "max": "max",
+          "off": null
         },
         "inputLimits": {
           "images": {
@@ -288,54 +288,6 @@
         "type": "chat"
       },
       {
-        "id": "claude-opus-5",
-        "name": "Claude Opus 5",
-        "api": "anthropic-messages",
-        "provider": "github-copilot",
-        "baseUrl": "https://api.individual.githubcopilot.com",
-        "reasoning": true,
-        "input": [
-          "text",
-          "image"
-        ],
-        "cost": {
-          "input": 5,
-          "output": 25,
-          "cacheRead": 0.5,
-          "cacheWrite": 6.25
-        },
-        "contextWindow": 1000000,
-        "maxTokens": 64000,
-        "headers": {
-          "User-Agent": "GitHubCopilotChat/0.35.0",
-          "Editor-Version": "vscode/1.107.0",
-          "Editor-Plugin-Version": "copilot-chat/0.35.0",
-          "Copilot-Integration-Id": "vscode-chat"
-        },
-        "compat": {
-          "supportsStrictTools": true,
-          "forceAdaptiveThinking": true,
-          "supportsTemperature": false,
-          "supportsMidConvoSystemMessages": true
-        },
-        "thinkingLevelMap": {
-          "xhigh": "xhigh",
-          "max": "max",
-          "minimal": "low"
-        },
-        "inputLimits": {
-          "images": {
-            "resize": {
-              "maxWidth": 2000,
-              "maxHeight": 2000,
-              "maxBytes": 4718592,
-              "jpegQuality": 80
-            }
-          }
-        },
-        "type": "chat"
-      },
-      {
         "id": "claude-opus-5.5",
         "name": "Claude Opus 5.5",
         "api": "anthropic-messages",
@@ -361,13 +313,13 @@
           "Copilot-Integration-Id": "vscode-chat"
         },
         "thinkingLevelMap": {
-          "off": null,
           "minimal": null,
           "low": "low",
           "medium": "medium",
           "high": "high",
           "xhigh": "xhigh",
-          "max": "max"
+          "max": "max",
+          "off": null
         },
         "compat": {
           "supportsStrictTools": true,
@@ -511,7 +463,8 @@
         },
         "thinkingLevelMap": {
           "xhigh": "xhigh",
-          "max": "max"
+          "max": "max",
+          "off": null
         },
         "inputLimits": {
           "images": {
@@ -964,67 +917,6 @@
               "output": 30,
               "cacheRead": 0.8,
               "cacheWrite": 10
-            }
-          ]
-        },
-        "contextWindow": 1050000,
-        "maxTokens": 128000,
-        "headers": {
-          "User-Agent": "GitHubCopilotChat/0.35.0",
-          "Editor-Version": "vscode/1.107.0",
-          "Editor-Plugin-Version": "copilot-chat/0.35.0",
-          "Copilot-Integration-Id": "vscode-chat"
-        },
-        "compat": {
-          "supportsStrictMode": true,
-          "supportsMidConvoSystemMessages": true,
-          "supportsAdditionalTools": true,
-          "supportsOpenAIGrammarTools": true
-        },
-        "thinkingLevelMap": {
-          "off": null,
-          "minimal": "low",
-          "low": "low",
-          "medium": "medium",
-          "high": "high",
-          "xhigh": "xhigh",
-          "max": "max"
-        },
-        "inputLimits": {
-          "images": {
-            "resize": {
-              "maxWidth": 2000,
-              "maxHeight": 2000,
-              "maxBytes": 4718592,
-              "jpegQuality": 80
-            }
-          }
-        },
-        "type": "chat"
-      },
-      {
-        "id": "gpt-5.6-terra",
-        "name": "GPT-5.6 Terra",
-        "api": "openai-responses",
-        "provider": "github-copilot",
-        "baseUrl": "https://api.individual.githubcopilot.com",
-        "reasoning": true,
-        "input": [
-          "text",
-          "image"
-        ],
-        "cost": {
-          "input": 2,
-          "output": 12,
-          "cacheRead": 0.2,
-          "cacheWrite": 2.5,
-          "tiers": [
-            {
-              "inputTokensAbove": 272000,
-              "input": 4,
-              "output": 18,
-              "cacheRead": 0.4,
-              "cacheWrite": 5
             }
           ]
         },
@@ -1865,6 +1757,40 @@
       },
       {
         "type": "classifier",
+        "id": "gpt-6-luna-decisions",
+        "name": "GPT-6 Luna Decisions",
+        "api": "openai-decisions",
+        "provider": "github-copilot",
+        "baseUrl": "https://api.individual.githubcopilot.com",
+        "input": [
+          "text",
+          "image"
+        ],
+        "cost": {
+          "input": 0.1,
+          "output": 0,
+          "cacheRead": 0.1,
+          "cacheWrite": 0.1,
+          "tiers": [
+            {
+              "inputTokensAbove": 272000,
+              "input": 0.2,
+              "output": 0,
+              "cacheRead": 0.2,
+              "cacheWrite": 0.2
+            }
+          ]
+        },
+        "contextWindow": 872000,
+        "headers": {
+          "User-Agent": "GitHubCopilotChat/0.35.0",
+          "Editor-Version": "vscode/1.107.0",
+          "Editor-Plugin-Version": "copilot-chat/0.35.0",
+          "Copilot-Integration-Id": "vscode-chat"
+        }
+      },
+      {
+        "type": "classifier",
         "id": "microsoft-decision-1",
         "name": "Microsoft-Decision-1",
         "api": "typesafe-system-one",
@@ -1888,9 +1814,9 @@
         }
       }
     ],
-    "lastModified": 1795182873000,
-    "etag": "W/\"5fcc814c5c7ac2113eb1f6e613a4664a\"",
-    "checkedAt": 1795573168830
+    "lastModified": 1795598683000,
+    "etag": "W/\"cc7b7738a97fc5f01521ba6084e0fde3\"",
+    "checkedAt": 1795661785875
   },
   "google": {
     "models": [
@@ -2910,7 +2836,7 @@
     ],
     "lastModified": 1795526524000,
     "etag": "W/\"430f47cc3730962787ad8f9f5b38734f\"",
-    "checkedAt": 1795573168832
+    "checkedAt": 1795661785849
   },
   "antigravity": {
     "models": [
@@ -3303,17 +3229,6 @@
           }
         ],
         "routing": {
-          "gemini-4-hydrogen-sonar": {
-            "off": "gemini-4-hydrogen-sonar",
-            "routing": {
-              "minimal": "gemini-4-hydrogen-sonar",
-              "low": "gemini-4-hydrogen-sonar",
-              "medium": "gemini-4-hydrogen-sonar",
-              "high": "gemini-4-hydrogen-sonar",
-              "xhigh": "gemini-4-hydrogen-sonar"
-            },
-            "defaultRequestId": "gemini-4-hydrogen-sonar"
-          },
           "gemini-4-hydrogen-tiered": {
             "off": "gemini-4-hydrogen-tiered-high",
             "routing": {
@@ -3336,6 +3251,17 @@
             },
             "defaultRequestId": "gemini-3.8-flash-low"
           },
+          "gemini-4-hydrogen": {
+            "off": "gemini-4-hydrogen-low",
+            "routing": {
+              "minimal": "gemini-4-hydrogen-low",
+              "low": "gemini-4-hydrogen-low",
+              "medium": "gemini-4-hydrogen-medium",
+              "high": "gemini-4-hydrogen-high",
+              "xhigh": "gemini-4-hydrogen-xhigh"
+            },
+            "defaultRequestId": "gemini-4-hydrogen-low"
+          },
           "gpt-oss-120b": {
             "off": "gpt-oss-120b-medium",
             "routing": {
@@ -3347,16 +3273,16 @@
             },
             "defaultRequestId": "gpt-oss-120b-medium"
           },
-          "gemini-4-hydrogen": {
-            "off": "gemini-4-hydrogen-low",
+          "gemini-4-hydrogen-sonar": {
+            "off": "gemini-4-hydrogen-sonar",
             "routing": {
-              "minimal": "gemini-4-hydrogen-low",
-              "low": "gemini-4-hydrogen-low",
-              "medium": "gemini-4-hydrogen-medium",
-              "high": "gemini-4-hydrogen-high",
-              "xhigh": "gemini-4-hydrogen-xhigh"
+              "minimal": "gemini-4-hydrogen-sonar",
+              "low": "gemini-4-hydrogen-sonar",
+              "medium": "gemini-4-hydrogen-sonar",
+              "high": "gemini-4-hydrogen-sonar",
+              "xhigh": "gemini-4-hydrogen-sonar"
             },
-            "defaultRequestId": "gemini-4-hydrogen-low"
+            "defaultRequestId": "gemini-4-hydrogen-sonar"
           },
           "claude-opus-4-6": {
             "off": "claude-opus-4-6-thinking",
@@ -3382,7 +3308,7 @@
           }
         }
       },
-      "checkedAt": 1795573169802,
+      "checkedAt": 1795661786556,
       "modelEnums": {
         "gemini-3.8-flash-low": "MODEL_PLACEHOLDER_M320",
         "gemini-3.5-flash-lite": "MODEL_PLACEHOLDER_M198",
