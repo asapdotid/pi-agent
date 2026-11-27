@@ -11,8 +11,6 @@
     "rejectNewSyntaxErrors": true
   },
   "collapse": {
-    "enabled": true,
-    "delaySec": 10,
     "tools": {
       "bash": true,
       "read": true,
@@ -21,5 +19,11 @@
       "find": true,
       "grep": true
     }
+  },
+  "extensions": {
+    "disabled": [
+      "@xynogen/pix-footer",
+      "@xynogen/pix-welcome"
+    ]
   }
 }

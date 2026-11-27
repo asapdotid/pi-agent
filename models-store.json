@@ -29,12 +29,17 @@
         "compat": {
           "supportsStrictTools": true,
           "forceAdaptiveThinking": true,
-          "supportsMidConvoSystemMessages": true
+          "supportsMidConvoSystemMessages": true,
+          "supportsMidConvoToolChanges": true
         },
         "thinkingLevelMap": {
           "xhigh": "xhigh",
           "max": "max",
           "off": null
+        },
+        "promptCache": {
+          "short": 300,
+          "long": 3600
         },
         "inputLimits": {
           "images": {
@@ -76,12 +81,18 @@
         "compat": {
           "supportsStrictTools": true,
           "forceAdaptiveThinking": true,
-          "supportsMidConvoSystemMessages": true
+          "supportsMidConvoEffort": true,
+          "supportsMidConvoSystemMessages": true,
+          "supportsMidConvoToolChanges": true
         },
         "thinkingLevelMap": {
           "xhigh": "xhigh",
           "max": "max",
           "off": null
+        },
+        "promptCache": {
+          "short": 300,
+          "long": 3600
         },
         "inputLimits": {
           "images": {
@@ -123,12 +134,18 @@
         "compat": {
           "supportsStrictTools": true,
           "forceAdaptiveThinking": true,
-          "supportsMidConvoSystemMessages": true
+          "supportsMidConvoEffort": true,
+          "supportsMidConvoSystemMessages": true,
+          "supportsMidConvoToolChanges": true
         },
         "thinkingLevelMap": {
           "xhigh": "xhigh",
           "max": "max",
           "off": null
+        },
+        "promptCache": {
+          "short": 300,
+          "long": 3600
         },
         "inputLimits": {
           "images": {
@@ -170,6 +187,10 @@
         "compat": {
           "supportsStrictTools": true,
           "supportsEagerToolInputStreaming": false
+        },
+        "promptCache": {
+          "short": 300,
+          "long": 3600
         },
         "inputLimits": {
           "images": {
@@ -221,11 +242,17 @@
           "supportsStrictTools": true,
           "forceAdaptiveThinking": true,
           "supportsTemperature": false,
-          "supportsMidConvoSystemMessages": true
+          "supportsMidConvoEffort": true,
+          "supportsMidConvoSystemMessages": true,
+          "supportsMidConvoToolChanges": true
         },
         "thinkingLevelMap": {
           "xhigh": "xhigh",
           "max": "max"
+        },
+        "promptCache": {
+          "short": 300,
+          "long": 3600
         },
         "inputLimits": {
           "images": {
@@ -268,12 +295,17 @@
           "supportsStrictTools": true,
           "forceAdaptiveThinking": true,
           "supportsTemperature": false,
-          "supportsMidConvoSystemMessages": true
+          "supportsMidConvoSystemMessages": true,
+          "supportsMidConvoToolChanges": true
         },
         "thinkingLevelMap": {
           "xhigh": "xhigh",
           "max": "max",
           "minimal": "low"
+        },
+        "promptCache": {
+          "short": 300,
+          "long": 3600
         },
         "inputLimits": {
           "images": {
@@ -325,7 +357,13 @@
           "supportsStrictTools": true,
           "forceAdaptiveThinking": true,
           "supportsTemperature": false,
-          "supportsMidConvoSystemMessages": true
+          "supportsMidConvoEffort": true,
+          "supportsMidConvoSystemMessages": true,
+          "supportsMidConvoToolChanges": true
+        },
+        "promptCache": {
+          "short": 300,
+          "long": 3600
         },
         "inputLimits": {
           "images": {
@@ -371,6 +409,10 @@
         "thinkingLevelMap": {
           "max": "max",
           "minimal": "low"
+        },
+        "promptCache": {
+          "short": 300,
+          "long": 3600
         },
         "inputLimits": {
           "images": {
@@ -418,6 +460,10 @@
           "xhigh": "xhigh",
           "max": "max"
         },
+        "promptCache": {
+          "short": 300,
+          "long": 3600
+        },
         "inputLimits": {
           "images": {
             "resize": {
@@ -459,12 +505,18 @@
           "supportsStrictTools": true,
           "forceAdaptiveThinking": true,
           "supportsTemperature": false,
-          "supportsMidConvoSystemMessages": true
+          "supportsMidConvoEffort": true,
+          "supportsMidConvoSystemMessages": true,
+          "supportsMidConvoToolChanges": true
         },
         "thinkingLevelMap": {
           "xhigh": "xhigh",
           "max": "max",
           "off": null
+        },
+        "promptCache": {
+          "short": 300,
+          "long": 3600
         },
         "inputLimits": {
           "images": {
@@ -760,6 +812,7 @@
         },
         "compat": {
           "supportsStrictMode": true,
+          "supportsMidConvoSystemMessages": true,
           "supportsOpenAIGrammarTools": true
         },
         "thinkingLevelMap": {
@@ -993,7 +1046,8 @@
           "supportsStrictMode": true,
           "supportsMidConvoSystemMessages": true,
           "supportsAdditionalTools": true,
-          "supportsOpenAIGrammarTools": true
+          "supportsOpenAIGrammarTools": true,
+          "supportsMidConvoEffort": true
         },
         "thinkingLevelMap": {
           "off": null,
@@ -1054,7 +1108,8 @@
           "supportsStrictMode": true,
           "supportsMidConvoSystemMessages": true,
           "supportsAdditionalTools": true,
-          "supportsOpenAIGrammarTools": true
+          "supportsOpenAIGrammarTools": true,
+          "supportsMidConvoEffort": true
         },
         "thinkingLevelMap": {
           "off": "none",
@@ -1115,7 +1170,8 @@
           "supportsStrictMode": true,
           "supportsMidConvoSystemMessages": true,
           "supportsAdditionalTools": true,
-          "supportsOpenAIGrammarTools": true
+          "supportsOpenAIGrammarTools": true,
+          "supportsMidConvoEffort": true
         },
         "thinkingLevelMap": {
           "off": "none",
@@ -1176,7 +1232,8 @@
           "supportsStrictMode": true,
           "supportsMidConvoSystemMessages": true,
           "supportsAdditionalTools": true,
-          "supportsOpenAIGrammarTools": true
+          "supportsOpenAIGrammarTools": true,
+          "supportsMidConvoEffort": true
         },
         "thinkingLevelMap": {
           "off": null,
@@ -1237,7 +1294,8 @@
           "supportsStrictMode": true,
           "supportsMidConvoSystemMessages": true,
           "supportsAdditionalTools": true,
-          "supportsOpenAIGrammarTools": true
+          "supportsOpenAIGrammarTools": true,
+          "supportsMidConvoEffort": true
         },
         "thinkingLevelMap": {
           "off": "none",
@@ -1298,7 +1356,8 @@
           "supportsStrictMode": true,
           "supportsMidConvoSystemMessages": true,
           "supportsAdditionalTools": true,
-          "supportsOpenAIGrammarTools": true
+          "supportsOpenAIGrammarTools": true,
+          "supportsMidConvoEffort": true
         },
         "thinkingLevelMap": {
           "off": null,
@@ -1359,7 +1418,8 @@
           "supportsStrictMode": true,
           "supportsMidConvoSystemMessages": true,
           "supportsAdditionalTools": true,
-          "supportsOpenAIGrammarTools": true
+          "supportsOpenAIGrammarTools": true,
+          "supportsMidConvoEffort": true
         },
         "thinkingLevelMap": {
           "off": null,
@@ -1634,7 +1694,8 @@
           "Copilot-Integration-Id": "vscode-chat"
         },
         "compat": {
-          "supportsStrictMode": true
+          "supportsStrictMode": true,
+          "supportsMidConvoSystemMessages": true
         },
         "thinkingLevelMap": {
           "off": null,
@@ -1683,7 +1744,8 @@
           "Copilot-Integration-Id": "vscode-chat"
         },
         "compat": {
-          "supportsStrictMode": true
+          "supportsStrictMode": true,
+          "supportsMidConvoSystemMessages": true
         },
         "thinkingLevelMap": {
           "off": null,
@@ -1732,7 +1794,8 @@
           "Copilot-Integration-Id": "vscode-chat"
         },
         "compat": {
-          "supportsStrictMode": true
+          "supportsStrictMode": true,
+          "supportsMidConvoSystemMessages": true
         },
         "thinkingLevelMap": {
           "off": null,
@@ -1814,9 +1877,9 @@
         }
       }
     ],
-    "lastModified": 1795598683000,
-    "etag": "W/\"cc7b7738a97fc5f01521ba6084e0fde3\"",
-    "checkedAt": 1795676507526
+    "lastModified": 1795689357000,
+    "etag": "W/\"f22bbf861263d829c2acd0bc0cffacc4\"",
+    "checkedAt": 1795759254149
   },
   "google": {
     "models": [
@@ -2836,13 +2899,13 @@
     ],
     "lastModified": 1795526524000,
     "etag": "W/\"430f47cc3730962787ad8f9f5b38734f\"",
-    "checkedAt": 1795676507432
+    "checkedAt": 1795759254130
   },
   "antigravity": {
     "models": [
       {
         "id": "gemini-3.8-flash",
-        "name": "Gemini 3.8 Flash (Antigravity)",
+        "name": "Gemini 3.8 Flash",
         "reasoning": true,
         "thinkingLevelMap": {
           "off": null,
@@ -2871,7 +2934,7 @@
       },
       {
         "id": "claude-opus-4-6",
-        "name": "Claude Opus 4.6 (Antigravity)",
+        "name": "Claude Opus 4.6",
         "reasoning": true,
         "thinkingLevelMap": {
           "off": null,
@@ -2900,7 +2963,7 @@
       },
       {
         "id": "claude-sonnet-4-6",
-        "name": "Claude Sonnet 4.6 (Antigravity)",
+        "name": "Claude Sonnet 4.6",
         "reasoning": true,
         "thinkingLevelMap": {
           "off": null,
@@ -2929,7 +2992,7 @@
       },
       {
         "id": "gemini-4-hydrogen",
-        "name": "Gemini 4 Hydrogen (Antigravity)",
+        "name": "Gemini 4 Hydrogen",
         "reasoning": true,
         "thinkingLevelMap": {
           "off": null,
@@ -2958,7 +3021,7 @@
       },
       {
         "id": "gemini-4-hydrogen-sonar",
-        "name": "Gemini 4 Hydrogen Sonar (Antigravity)",
+        "name": "Gemini 4 Hydrogen Sonar",
         "reasoning": true,
         "thinkingLevelMap": {
           "off": null,
@@ -2987,7 +3050,7 @@
       },
       {
         "id": "gemini-4-hydrogen-tiered",
-        "name": "Gemini 4 Hydrogen (Antigravity)",
+        "name": "Gemini 4 Hydrogen",
         "reasoning": true,
         "thinkingLevelMap": {
           "off": null,
@@ -3016,7 +3079,7 @@
       },
       {
         "id": "gpt-oss-120b",
-        "name": "Gpt-Oss 120b (Antigravity)",
+        "name": "Gpt-Oss 120b",
         "reasoning": true,
         "thinkingLevelMap": {
           "off": null,
@@ -3048,7 +3111,7 @@
         "models": [
           {
             "id": "gemini-3.8-flash",
-            "name": "Gemini 3.8 Flash (Antigravity)",
+            "name": "Gemini 3.8 Flash",
             "reasoning": true,
             "thinkingLevelMap": {
               "off": null,
@@ -3074,7 +3137,7 @@
           },
           {
             "id": "claude-opus-4-6",
-            "name": "Claude Opus 4.6 (Antigravity)",
+            "name": "Claude Opus 4.6",
             "reasoning": true,
             "thinkingLevelMap": {
               "off": null,
@@ -3100,7 +3163,7 @@
           },
           {
             "id": "claude-sonnet-4-6",
-            "name": "Claude Sonnet 4.6 (Antigravity)",
+            "name": "Claude Sonnet 4.6",
             "reasoning": true,
             "thinkingLevelMap": {
               "off": null,
@@ -3126,7 +3189,7 @@
           },
           {
             "id": "gemini-4-hydrogen",
-            "name": "Gemini 4 Hydrogen (Antigravity)",
+            "name": "Gemini 4 Hydrogen",
             "reasoning": true,
             "thinkingLevelMap": {
               "off": null,
@@ -3152,7 +3215,7 @@
           },
           {
             "id": "gemini-4-hydrogen-sonar",
-            "name": "Gemini 4 Hydrogen Sonar (Antigravity)",
+            "name": "Gemini 4 Hydrogen Sonar",
             "reasoning": true,
             "thinkingLevelMap": {
               "off": null,
@@ -3178,7 +3241,7 @@
           },
           {
             "id": "gemini-4-hydrogen-tiered",
-            "name": "Gemini 4 Hydrogen (Antigravity)",
+            "name": "Gemini 4 Hydrogen",
             "reasoning": true,
             "thinkingLevelMap": {
               "off": null,
@@ -3204,7 +3267,7 @@
           },
           {
             "id": "gpt-oss-120b",
-            "name": "Gpt-Oss 120b (Antigravity)",
+            "name": "Gpt-Oss 120b",
             "reasoning": true,
             "thinkingLevelMap": {
               "off": null,
@@ -3229,27 +3292,16 @@
           }
         ],
         "routing": {
-          "gpt-oss-120b": {
-            "off": "gpt-oss-120b-medium",
+          "gemini-4-hydrogen-tiered": {
+            "off": "gemini-4-hydrogen-tiered-high",
             "routing": {
-              "minimal": "gpt-oss-120b-medium",
-              "low": "gpt-oss-120b-medium",
-              "medium": "gpt-oss-120b-medium",
-              "high": "gpt-oss-120b-medium",
-              "xhigh": "gpt-oss-120b-medium"
+              "minimal": "gemini-4-hydrogen-tiered-high",
+              "low": "gemini-4-hydrogen-tiered-high",
+              "medium": "gemini-4-hydrogen-tiered-high",
+              "high": "gemini-4-hydrogen-tiered-high",
+              "xhigh": "gemini-4-hydrogen-tiered-xhigh"
             },
-            "defaultRequestId": "gpt-oss-120b-medium"
-          },
-          "gemini-4-hydrogen": {
-            "off": "gemini-4-hydrogen-low",
-            "routing": {
-              "minimal": "gemini-4-hydrogen-low",
-              "low": "gemini-4-hydrogen-low",
-              "medium": "gemini-4-hydrogen-medium",
-              "high": "gemini-4-hydrogen-high",
-              "xhigh": "gemini-4-hydrogen-xhigh"
-            },
-            "defaultRequestId": "gemini-4-hydrogen-low"
+            "defaultRequestId": "gemini-4-hydrogen-tiered-high"
           },
           "claude-opus-4-6": {
             "off": "claude-opus-4-6-thinking",
@@ -3262,16 +3314,27 @@
             },
             "defaultRequestId": "claude-opus-4-6-thinking"
           },
-          "gemini-4-hydrogen-tiered": {
-            "off": "gemini-4-hydrogen-tiered-high",
+          "gemini-3.8-flash": {
+            "off": "gemini-3.8-flash-low",
             "routing": {
-              "minimal": "gemini-4-hydrogen-tiered-high",
-              "low": "gemini-4-hydrogen-tiered-high",
-              "medium": "gemini-4-hydrogen-tiered-high",
-              "high": "gemini-4-hydrogen-tiered-high",
-              "xhigh": "gemini-4-hydrogen-tiered-xhigh"
+              "minimal": "gemini-3.8-flash-low",
+              "low": "gemini-3.8-flash-low",
+              "medium": "gemini-3.8-flash-medium",
+              "high": "gemini-3.8-flash-high",
+              "xhigh": "gemini-3.8-flash-high"
             },
-            "defaultRequestId": "gemini-4-hydrogen-tiered-high"
+            "defaultRequestId": "gemini-3.8-flash-low"
+          },
+          "gemini-4-hydrogen": {
+            "off": "gemini-4-hydrogen-low",
+            "routing": {
+              "minimal": "gemini-4-hydrogen-low",
+              "low": "gemini-4-hydrogen-low",
+              "medium": "gemini-4-hydrogen-medium",
+              "high": "gemini-4-hydrogen-high",
+              "xhigh": "gemini-4-hydrogen-xhigh"
+            },
+            "defaultRequestId": "gemini-4-hydrogen-low"
           },
           "claude-sonnet-4-6": {
             "off": "claude-sonnet-4-6",
@@ -3295,20 +3358,20 @@
             },
             "defaultRequestId": "gemini-4-hydrogen-sonar"
           },
-          "gemini-3.8-flash": {
-            "off": "gemini-3.8-flash-low",
+          "gpt-oss-120b": {
+            "off": "gpt-oss-120b-medium",
             "routing": {
-              "minimal": "gemini-3.8-flash-low",
-              "low": "gemini-3.8-flash-low",
-              "medium": "gemini-3.8-flash-medium",
-              "high": "gemini-3.8-flash-high",
-              "xhigh": "gemini-3.8-flash-high"
+              "minimal": "gpt-oss-120b-medium",
+              "low": "gpt-oss-120b-medium",
+              "medium": "gpt-oss-120b-medium",
+              "high": "gpt-oss-120b-medium",
+              "xhigh": "gpt-oss-120b-medium"
             },
-            "defaultRequestId": "gemini-3.8-flash-low"
+            "defaultRequestId": "gpt-oss-120b-medium"
           }
         }
       },
-      "checkedAt": 1795675921062,
+      "checkedAt": 1795765394213,
       "modelEnums": {
         "gemini-3.8-flash-low": "MODEL_PLACEHOLDER_M320",
         "gemini-3.5-flash-lite": "MODEL_PLACEHOLDER_M198",
@@ -3345,7 +3408,7 @@
         "gemini-4-hydrogen-high": "MODEL_PLACEHOLDER_M525"
       },
       "schemaVersion": 2,
-      "credentialKey": "82fc7b99a019f5954e64b672b0bc3acb50b0fc6bb6e0835610b4319eb0a88e60"
+      "credentialKey": "6395b616163b6aec27e24fd266b7d70163a630fc736d0fd0c4f5f727516f45fe"
     }
   }
 }

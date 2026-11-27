@@ -22,6 +22,7 @@ export interface LoadedCounts {
   contextFiles: number;
   skills: number;
   promptTemplates: number;
+  extensions?: string[];
 }
 
 function formatTokens(tokens: number): string {
@@ -36,12 +37,12 @@ function formatTokens(tokens: number): string {
 // ═══════════════════════════════════════════════════════════════════════════
 
 const PI_LOGO = [
-  "██████████    ",
-  "████  ████    ",
-  "████  ████    ",
-  "████████  ████",
-  "████      ████",
-  "████      ████",
+  "▄████████████████▄",
+  "▀▀▀████▀▀▀▀████▀▀▀",
+  "    ████    ████   ",
+  "    ████    ████   ",
+  "    ████    ████▄  ",
+  "    ▀▀▀▀    ▀▀████▀",
 ];
 
 const GRADIENT_COLORS = [
@@ -62,15 +63,17 @@ function dim(text: string): string {
   return getFgAnsiCode("sep") + text + ansi.reset;
 }
 
-function gradientLine(line: string): string {
+// Diagonal gradient: colour shifts with column and row
+function gradientLine(line: string, row = 0): string {
   const reset = ansi.reset;
   let result = "";
-  let colorIdx = 0;
   const step = Math.max(1, Math.floor(line.length / GRADIENT_COLORS.length));
 
   for (let i = 0; i < line.length; i++) {
-    if (i > 0 && i % step === 0 && colorIdx < GRADIENT_COLORS.length - 1)
-      colorIdx++;
+    const colorIdx = Math.min(
+      GRADIENT_COLORS.length - 1,
+      Math.floor((i + row * 2) / step),
+    );
     const char = line[i];
     if (char !== " ") {
       result += GRADIENT_COLORS[colorIdx] + char + reset;
@@ -102,10 +105,14 @@ interface WelcomeData {
   recentSessions: RecentSession[];
   loadedCounts: LoadedCounts;
   initialContextTokens: number | null;
+  /** theme.fg; falls back to plain dim */
+  fg?: (color: string, text: string) => string;
+  /** returns the prompt box's current border painter (follows thinking level) */
+  border?: () => (text: string) => string;
 }
 
 function buildLeftColumn(data: WelcomeData, colWidth: number): string[] {
-  const logoColored = PI_LOGO.map((line) => gradientLine(line));
+  const logoColored = PI_LOGO.map((line, row) => gradientLine(line, row));
 
   return [
     "",
@@ -120,7 +127,11 @@ function buildLeftColumn(data: WelcomeData, colWidth: number): string[] {
 
 function buildRightColumn(data: WelcomeData, colWidth: number): string[] {
   const hChar = "─";
-  const separator = ` ${dim(hChar.repeat(colWidth - 2))}`;
+  const sepPaint = (t: string) =>
+    data.fg ? data.fg("borderMuted", t) : dim(t);
+  const head = (t: string) =>
+    ` ${bold(data.fg ? data.fg("accent", t) : fgOnly("accent", t))}`;
+  const separator = ` ${sepPaint(hChar.repeat(colWidth - 2))}`;
 
   // Session lines
   const sessionLines: string[] = [];
@@ -143,6 +154,12 @@ function buildRightColumn(data: WelcomeData, colWidth: number): string[] {
     if (contextFiles > 0) {
       countLines.push(
         ` ${itemPrefix}${fgOnly("gitClean", `${contextFiles}`)} context file${contextFiles !== 1 ? "s" : ""}`,
+      );
+    }
+    const extCount = data.loadedCounts.extensions?.length ?? 0;
+    if (extCount > 0) {
+      countLines.push(
+        ` ${itemPrefix}${fgOnly("gitClean", `${extCount}`)} extension${extCount !== 1 ? "s" : ""}`,
       );
     }
     if (skills > 0) {
@@ -170,15 +187,15 @@ function buildRightColumn(data: WelcomeData, colWidth: number): string[] {
   }
 
   return [
-    ` ${bold(fgOnly("accent", "Tips"))}`,
+    head("Tips"),
     ` ${dim("/")} for commands`,
     ` ${dim("!")} to run bash`,
     ` ${dim("Shift+Tab")} cycle thinking`,
     separator,
-    ` ${bold(fgOnly("accent", "Loaded"))}`,
+    head("Loaded"),
     ...countLines,
     separator,
-    ` ${bold(fgOnly("accent", "Recent sessions"))}`,
+    head("Recent sessions"),
     ...sessionLines,
     "",
   ];
@@ -208,11 +225,13 @@ function renderWelcomeBox(
   const rightCol = Math.max(1, boxWidth - leftCol - 3); // Ensure rightCol is at least 1
 
   const hChar = "─";
-  const v = dim("│");
-  const tl = dim("╭");
-  const tr = dim("╮");
-  const bl = dim("╰");
-  const br = dim("╯");
+  const bc = (t: string) =>
+    data.border ? data.border()(t) : data.fg ? data.fg("border", t) : dim(t);
+  const v = bc("│");
+  const tl = bc("╭");
+  const tr = bc("╮");
+  const bl = bc("╰");
+  const br = bc("╯");
 
   const leftLines = buildLeftColumn(data, leftCol);
   const rightLines = buildRightColumn(data, rightCol);
@@ -220,12 +239,13 @@ function renderWelcomeBox(
   const lines: string[] = [];
 
   // Top border with title
-  const title = " pi agent ";
-  const titlePrefix = dim(hChar.repeat(3));
-  const titleStyled = titlePrefix + fgOnly("model", title);
+  const title = " π pi agent ";
+  const titlePrefix = bc(hChar.repeat(3));
+  const titleStyled =
+    titlePrefix + (data.fg ? bold(data.fg("accent", title)) : fgOnly("model", title));
   const titleVisLen = 3 + visibleWidth(title);
   const afterTitle = boxWidth - 2 - titleVisLen;
-  const afterTitleText = afterTitle > 0 ? dim(hChar.repeat(afterTitle)) : "";
+  const afterTitleText = afterTitle > 0 ? bc(hChar.repeat(afterTitle)) : "";
   lines.push(tl + titleStyled + afterTitleText + tr);
 
   // Content rows
@@ -264,6 +284,8 @@ export class WelcomeComponent implements Component {
       promptTemplates: 0,
     },
     initialContextTokens: number | null = null,
+    fg?: WelcomeData["fg"],
+    border?: WelcomeData["border"],
   ) {
     this.data = {
       modelName,
@@ -271,6 +293,8 @@ export class WelcomeComponent implements Component {
       recentSessions,
       loadedCounts,
       initialContextTokens,
+      fg,
+      border,
     };
   }
 
@@ -297,6 +321,8 @@ export class WelcomeComponent implements Component {
 
     // Bottom line with countdown
     const countdownText = ` Press any key to continue (${this.countdown}s) `;
+    const bc = (t: string) =>
+      this.data.border ? this.data.border()(t) : this.data.fg ? this.data.fg("border", t) : dim(t);
     const countdownStyled = dim(countdownText);
     const bottomContentWidth = boxWidth - 2;
     const countdownVisLen = visibleWidth(countdownText);
@@ -304,9 +330,9 @@ export class WelcomeComponent implements Component {
     const rightPad = bottomContentWidth - countdownVisLen - leftPad;
     const hChar = "─";
     const bottomLine =
-      dim(hChar.repeat(Math.max(0, leftPad))) +
+      bc(hChar.repeat(Math.max(0, leftPad))) +
       countdownStyled +
-      dim(hChar.repeat(Math.max(0, rightPad)));
+      bc(hChar.repeat(Math.max(0, rightPad)));
 
     return renderWelcomeBox(this.data, termWidth, bottomLine);
   }
@@ -329,6 +355,8 @@ export class WelcomeHeader implements Component {
       promptTemplates: 0,
     },
     initialContextTokens: number | null = null,
+    fg?: WelcomeData["fg"],
+    border?: WelcomeData["border"],
   ) {
     this.data = {
       modelName,
@@ -336,6 +364,8 @@ export class WelcomeHeader implements Component {
       recentSessions,
       loadedCounts,
       initialContextTokens,
+      fg,
+      border,
     };
   }
 
@@ -360,8 +390,10 @@ export class WelcomeHeader implements Component {
     // Bottom line with column separator (leftCol=26, rightCol=boxWidth-29)
     const leftCol = 26;
     const rightCol = Math.max(1, boxWidth - leftCol - 3);
+    const bc = (t: string) =>
+      this.data.border ? this.data.border()(t) : this.data.fg ? this.data.fg("border", t) : dim(t);
     const bottomLine =
-      dim(hChar.repeat(leftCol)) + dim("┴") + dim(hChar.repeat(rightCol));
+      bc(hChar.repeat(leftCol)) + bc("┴") + bc(hChar.repeat(rightCol));
 
     const lines = renderWelcomeBox(this.data, termWidth, bottomLine);
     if (lines.length > 0) {
@@ -419,6 +451,7 @@ export function countLoadedCommands(
 /** Discover context files and combine them with Pi's effective resource snapshot. */
 export function discoverLoadedCounts(
   commands: readonly SlashCommandInfo[],
+  sourcePaths: readonly string[] = [],
 ): LoadedCounts {
   const homeDir = getHomeDir();
   const cwd = process.cwd();
@@ -436,7 +469,17 @@ export function discoverLoadedCounts(
     if (existsSync(path)) contextFiles++;
   }
 
-  return { contextFiles, ...countLoadedCommands(commands) };
+  const extensions = [
+    ...new Set(
+      [...commands.filter((c) => c.source === "extension").map((c) => c.sourceInfo.path), ...sourcePaths]
+        .filter((p) => !p.startsWith("<"))
+        .map((p) => {
+          const b = basename(p).replace(/\.[jt]s$/, "");
+          return b === "index" ? basename(join(p, "..")) : b;
+        }),
+    ),
+  ].sort();
+  return { contextFiles, ...countLoadedCommands(commands), extensions };
 }
 
 async function readSessionHeaderProjectName(
@@ -576,15 +619,21 @@ export default function (pi: ExtensionAPI) {
   pi.on("session_start", async (_event, ctx) => {
     if (!ctx.hasUI) return;
     const recent = await getRecentSessions(3).catch(() => []);
-    const counts = discoverLoadedCounts(pi.getCommands());
+    const counts = discoverLoadedCounts(
+      pi.getCommands(),
+      pi.getAllTools().map((t) => t.sourceInfo.path),
+    );
     const model = ctx.model;
     ctx.ui.setHeader(
-      () =>
+      (_tui, theme) =>
         new WelcomeHeader(
           model?.id ?? "no model",
           model?.provider ?? "",
           recent,
           counts,
+          null,
+          (c, t) => theme.fg(c as never, t),
+          () => theme.getThinkingBorderColor(pi.getThinkingLevel()),
         ),
     );
   });
