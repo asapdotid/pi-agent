@@ -27,12 +27,12 @@ function hexToRgb(hex: string): [number, number, number] {
 
 // Colors used by welcome/editor chrome rendering
 const THEME = {
-  sep: 244, // ANSI 256 gray
-  model: "#d787af", // Pink/mauve
-  path: "#00afaf", // Teal/cyan
-  gitClean: "#5faf5f", // Green
-  accent: "#febc38", // Orange
-  queue: "#febc38", // Orange
+  sep: 248, // ANSI 256 light gray
+  model: "#f0b8d0", // Pastel pink
+  path: "#a8e0e0", // Pastel teal
+  gitClean: "#b5e0b5", // Pastel green
+  accent: "#ffd9a0", // Pastel orange
+  queue: "#ffd9a0", // Pastel orange
 };
 
 // Color name to ANSI code mapping

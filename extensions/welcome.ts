@@ -1,15 +1,9 @@
 import { existsSync } from "node:fs";
 import { open, opendir, realpath, stat } from "node:fs/promises";
 import { join, basename } from "node:path";
-import type {
-  ExtensionAPI,
-  SlashCommandInfo,
-} from "@earendil-works/pi-coding-agent";
+import type { ExtensionAPI, SlashCommandInfo } from "@earendil-works/pi-coding-agent";
 import type { Component } from "@earendil-works/pi-tui";
-import {
-  truncateToWidth as tuiTruncateToWidth,
-  visibleWidth,
-} from "@earendil-works/pi-tui";
+import { truncateToWidth as tuiTruncateToWidth, visibleWidth } from "@earendil-works/pi-tui";
 import { ansi, fgOnly, getFgAnsiCode } from "../scripts/colors.ts";
 import { getAgentPath, getLegacyPiPath, getHomeDir } from "../scripts/paths.ts";
 
@@ -36,23 +30,9 @@ function formatTokens(tokens: number): string {
 // Shared rendering utilities
 // ═══════════════════════════════════════════════════════════════════════════
 
-const PI_LOGO = [
-  "▄████████████████▄",
-  "▀▀▀████▀▀▀▀████▀▀▀",
-  "    ████    ████   ",
-  "    ████    ████   ",
-  "    ████    ████▄  ",
-  "    ▀▀▀▀    ▀▀████▀",
-];
+const PI_LOGO = ["▄████████████████▄", "▀▀▀████▀▀▀▀████▀▀▀", "    ████    ████   ", "    ████    ████   ", "    ████    ████▄  ", "    ▀▀▀▀    ▀▀████▀"];
 
-const GRADIENT_COLORS = [
-  "\x1b[38;5;199m",
-  "\x1b[38;5;171m",
-  "\x1b[38;5;135m",
-  "\x1b[38;5;99m",
-  "\x1b[38;5;75m",
-  "\x1b[38;5;51m",
-];
+const GRADIENT_COLORS = ["\x1b[38;5;218m", "\x1b[38;5;219m", "\x1b[38;5;183m", "\x1b[38;5;147m", "\x1b[38;5;153m", "\x1b[38;5;159m"];
 const SESSION_HEADER_READ_BYTES = 8192;
 
 function bold(text: string): string {
@@ -70,10 +50,7 @@ function gradientLine(line: string, row = 0): string {
   const step = Math.max(1, Math.floor(line.length / GRADIENT_COLORS.length));
 
   for (let i = 0; i < line.length; i++) {
-    const colorIdx = Math.min(
-      GRADIENT_COLORS.length - 1,
-      Math.floor((i + row * 2) / step),
-    );
+    const colorIdx = Math.min(GRADIENT_COLORS.length - 1, Math.floor((i + row * 2) / step));
     const char = line[i];
     if (char !== " ") {
       result += GRADIENT_COLORS[colorIdx] + char + reset;
@@ -127,10 +104,8 @@ function buildLeftColumn(data: WelcomeData, colWidth: number): string[] {
 
 function buildRightColumn(data: WelcomeData, colWidth: number): string[] {
   const hChar = "─";
-  const sepPaint = (t: string) =>
-    data.fg ? data.fg("borderMuted", t) : dim(t);
-  const head = (t: string) =>
-    ` ${bold(data.fg ? data.fg("accent", t) : fgOnly("accent", t))}`;
+  const sepPaint = (t: string) => (data.fg ? data.fg("borderMuted", t) : dim(t));
+  const head = (t: string) => ` ${bold(data.fg ? data.fg("accent", t) : fgOnly("accent", t))}`;
   const separator = ` ${sepPaint(hChar.repeat(colWidth - 2))}`;
 
   // Session lines
@@ -139,9 +114,7 @@ function buildRightColumn(data: WelcomeData, colWidth: number): string[] {
     sessionLines.push(` ${dim("No recent sessions")}`);
   } else {
     for (const session of data.recentSessions.slice(0, 3)) {
-      sessionLines.push(
-        ` ${dim("• ")}${fgOnly("path", session.name)}${dim(` (${session.timeAgo})`)}`,
-      );
+      sessionLines.push(` ${dim("• ")}${fgOnly("path", session.name)}${dim(` (${session.timeAgo})`)}`);
     }
   }
 
@@ -152,44 +125,31 @@ function buildRightColumn(data: WelcomeData, colWidth: number): string[] {
 
   if (contextFiles > 0 || skills > 0 || promptTemplates > 0) {
     if (contextFiles > 0) {
-      countLines.push(
-        ` ${itemPrefix}${fgOnly("gitClean", `${contextFiles}`)} context file${contextFiles !== 1 ? "s" : ""}`,
-      );
+      countLines.push(` ${itemPrefix}${fgOnly("gitClean", `${contextFiles}`)} context file${contextFiles !== 1 ? "s" : ""}`);
     }
     const extCount = data.loadedCounts.extensions?.length ?? 0;
     if (extCount > 0) {
-      countLines.push(
-        ` ${itemPrefix}${fgOnly("gitClean", `${extCount}`)} extension${extCount !== 1 ? "s" : ""}`,
-      );
+      countLines.push(` ${itemPrefix}${fgOnly("gitClean", `${extCount}`)} extension${extCount !== 1 ? "s" : ""}`);
     }
     if (skills > 0) {
-      countLines.push(
-        ` ${itemPrefix}${fgOnly("gitClean", `${skills}`)} skill${skills !== 1 ? "s" : ""}`,
-      );
+      countLines.push(` ${itemPrefix}${fgOnly("gitClean", `${skills}`)} skill${skills !== 1 ? "s" : ""}`);
     }
     if (promptTemplates > 0) {
-      countLines.push(
-        ` ${itemPrefix}${fgOnly("gitClean", `${promptTemplates}`)} prompt template${promptTemplates !== 1 ? "s" : ""}`,
-      );
+      countLines.push(` ${itemPrefix}${fgOnly("gitClean", `${promptTemplates}`)} prompt template${promptTemplates !== 1 ? "s" : ""}`);
     }
   } else {
     countLines.push(` ${dim("No context files, skills, or prompts loaded")}`);
   }
 
-  if (
-    data.initialContextTokens !== null &&
-    Number.isFinite(data.initialContextTokens) &&
-    data.initialContextTokens > 0
-  ) {
-    countLines.push(
-      ` ${itemPrefix}${fgOnly("gitClean", `≈ ${formatTokens(data.initialContextTokens)}`)} initial prompt tokens`,
-    );
+  if (data.initialContextTokens !== null && Number.isFinite(data.initialContextTokens) && data.initialContextTokens > 0) {
+    countLines.push(` ${itemPrefix}${fgOnly("gitClean", `≈ ${formatTokens(data.initialContextTokens)}`)} initial prompt tokens`);
   }
 
   return [
     head("Tips"),
     ` ${dim("/")} for commands`,
     ` ${dim("!")} to run bash`,
+    ` ${dim("Ctrl+L")} select model`,
     ` ${dim("Shift+Tab")} cycle thinking`,
     separator,
     head("Loaded"),
@@ -201,11 +161,7 @@ function buildRightColumn(data: WelcomeData, colWidth: number): string[] {
   ];
 }
 
-function renderWelcomeBox(
-  data: WelcomeData,
-  termWidth: number,
-  bottomLine: string,
-): string[] {
+function renderWelcomeBox(data: WelcomeData, termWidth: number, bottomLine: string): string[] {
   // Minimum width for two-column layout: leftCol(26) + separator(3) + minRightCol(15) = 44
   const minLayoutWidth = 44;
 
@@ -217,16 +173,12 @@ function renderWelcomeBox(
   const minWidth = 76;
   const maxWidth = 96;
   // Clamp to termWidth to prevent crash on narrow terminals
-  const boxWidth = Math.min(
-    termWidth,
-    Math.max(minWidth, Math.min(termWidth - 2, maxWidth)),
-  );
+  const boxWidth = Math.min(termWidth, Math.max(minWidth, Math.min(termWidth - 2, maxWidth)));
   const leftCol = 26;
   const rightCol = Math.max(1, boxWidth - leftCol - 3); // Ensure rightCol is at least 1
 
   const hChar = "─";
-  const bc = (t: string) =>
-    data.border ? data.border()(t) : data.fg ? data.fg("border", t) : dim(t);
+  const bc = (t: string) => (data.border ? data.border()(t) : data.fg ? data.fg("border", t) : dim(t));
   const v = bc("│");
   const tl = bc("╭");
   const tr = bc("╮");
@@ -241,8 +193,7 @@ function renderWelcomeBox(
   // Top border with title
   const title = " π pi agent ";
   const titlePrefix = bc(hChar.repeat(3));
-  const titleStyled =
-    titlePrefix + (data.fg ? bold(data.fg("accent", title)) : fgOnly("model", title));
+  const titleStyled = titlePrefix + (data.fg ? bold(data.fg("accent", title)) : fgOnly("model", title));
   const titleVisLen = 3 + visibleWidth(title);
   const afterTitle = boxWidth - 2 - titleVisLen;
   const afterTitleText = afterTitle > 0 ? bc(hChar.repeat(afterTitle)) : "";
@@ -250,8 +201,9 @@ function renderWelcomeBox(
 
   // Content rows
   const maxRows = Math.max(leftLines.length, rightLines.length);
+  const topPad = Math.floor((maxRows - leftLines.length) / 2); // vertically center logo column
   for (let i = 0; i < maxRows; i++) {
-    const left = fitToWidth(leftLines[i] ?? "", leftCol);
+    const left = fitToWidth(leftLines[i - topPad] ?? "", leftCol);
     const right = fitToWidth(rightLines[i] ?? "", rightCol);
     lines.push(v + left + v + right + v);
   }
@@ -314,25 +266,18 @@ export class WelcomeComponent implements Component {
     const minWidth = 76;
     const maxWidth = 96;
     // Clamp to termWidth to prevent crash on narrow terminals
-    const boxWidth = Math.min(
-      termWidth,
-      Math.max(minWidth, Math.min(termWidth - 2, maxWidth)),
-    );
+    const boxWidth = Math.min(termWidth, Math.max(minWidth, Math.min(termWidth - 2, maxWidth)));
 
     // Bottom line with countdown
     const countdownText = ` Press any key to continue (${this.countdown}s) `;
-    const bc = (t: string) =>
-      this.data.border ? this.data.border()(t) : this.data.fg ? this.data.fg("border", t) : dim(t);
+    const bc = (t: string) => (this.data.border ? this.data.border()(t) : this.data.fg ? this.data.fg("border", t) : dim(t));
     const countdownStyled = dim(countdownText);
     const bottomContentWidth = boxWidth - 2;
     const countdownVisLen = visibleWidth(countdownText);
     const leftPad = Math.floor((bottomContentWidth - countdownVisLen) / 2);
     const rightPad = bottomContentWidth - countdownVisLen - leftPad;
     const hChar = "─";
-    const bottomLine =
-      bc(hChar.repeat(Math.max(0, leftPad))) +
-      countdownStyled +
-      bc(hChar.repeat(Math.max(0, rightPad)));
+    const bottomLine = bc(hChar.repeat(Math.max(0, leftPad))) + countdownStyled + bc(hChar.repeat(Math.max(0, rightPad)));
 
     return renderWelcomeBox(this.data, termWidth, bottomLine);
   }
@@ -381,19 +326,14 @@ export class WelcomeHeader implements Component {
     const minWidth = 76;
     const maxWidth = 96;
     // Clamp to termWidth to prevent crash on narrow terminals
-    const boxWidth = Math.min(
-      termWidth,
-      Math.max(minWidth, Math.min(termWidth - 2, maxWidth)),
-    );
+    const boxWidth = Math.min(termWidth, Math.max(minWidth, Math.min(termWidth - 2, maxWidth)));
     const hChar = "─";
 
     // Bottom line with column separator (leftCol=26, rightCol=boxWidth-29)
     const leftCol = 26;
     const rightCol = Math.max(1, boxWidth - leftCol - 3);
-    const bc = (t: string) =>
-      this.data.border ? this.data.border()(t) : this.data.fg ? this.data.fg("border", t) : dim(t);
-    const bottomLine =
-      bc(hChar.repeat(leftCol)) + bc("┴") + bc(hChar.repeat(rightCol));
+    const bc = (t: string) => (this.data.border ? this.data.border()(t) : this.data.fg ? this.data.fg("border", t) : dim(t));
+    const bottomLine = bc(hChar.repeat(leftCol)) + bc("┴") + bc(hChar.repeat(rightCol));
 
     const lines = renderWelcomeBox(this.data, termWidth, bottomLine);
     if (lines.length > 0) {
@@ -410,12 +350,7 @@ export class WelcomeHeader implements Component {
 const loggedDiscoveryErrors = new Set<string>();
 
 function logDiscoveryError(scope: string, error: unknown): void {
-  if (
-    typeof error === "object" &&
-    error !== null &&
-    "code" in error &&
-    (error as { code?: unknown }).code === "ENOENT"
-  ) {
+  if (typeof error === "object" && error !== null && "code" in error && (error as { code?: unknown }).code === "ENOENT") {
     return;
   }
 
@@ -434,9 +369,7 @@ function logDiscoveryError(scope: string, error: unknown): void {
 }
 
 /** Count Pi's effective prompt and skill commands after resource resolution. */
-export function countLoadedCommands(
-  commands: readonly SlashCommandInfo[],
-): Pick<LoadedCounts, "skills" | "promptTemplates"> {
+export function countLoadedCommands(commands: readonly SlashCommandInfo[]): Pick<LoadedCounts, "skills" | "promptTemplates"> {
   let skills = 0;
   let promptTemplates = 0;
 
@@ -449,21 +382,12 @@ export function countLoadedCommands(
 }
 
 /** Discover context files and combine them with Pi's effective resource snapshot. */
-export function discoverLoadedCounts(
-  commands: readonly SlashCommandInfo[],
-  sourcePaths: readonly string[] = [],
-): LoadedCounts {
+export function discoverLoadedCounts(commands: readonly SlashCommandInfo[], sourcePaths: readonly string[] = []): LoadedCounts {
   const homeDir = getHomeDir();
   const cwd = process.cwd();
   let contextFiles = 0;
 
-  const agentsMdPaths = [
-    getAgentPath("AGENTS.md"),
-    join(homeDir, ".claude", "AGENTS.md"),
-    join(cwd, "AGENTS.md"),
-    join(cwd, ".pi", "AGENTS.md"),
-    join(cwd, ".claude", "AGENTS.md"),
-  ];
+  const agentsMdPaths = [getAgentPath("AGENTS.md"), join(homeDir, ".claude", "AGENTS.md"), join(cwd, "AGENTS.md"), join(cwd, ".pi", "AGENTS.md"), join(cwd, ".claude", "AGENTS.md")];
 
   for (const path of agentsMdPaths) {
     if (existsSync(path)) contextFiles++;
@@ -482,10 +406,7 @@ export function discoverLoadedCounts(
   return { contextFiles, ...countLoadedCommands(commands), extensions };
 }
 
-async function readSessionHeaderProjectName(
-  filePath: string,
-  signal?: AbortSignal,
-): Promise<string | null> {
+async function readSessionHeaderProjectName(filePath: string, signal?: AbortSignal): Promise<string | null> {
   let file: Awaited<ReturnType<typeof open>> | undefined;
   try {
     signal?.throwIfAborted();
@@ -494,15 +415,11 @@ async function readSessionHeaderProjectName(
     const buffer = Buffer.alloc(SESSION_HEADER_READ_BYTES);
     const { bytesRead } = await file.read(buffer, 0, buffer.length, 0);
     signal?.throwIfAborted();
-    const firstLine = buffer
-      .toString("utf8", 0, bytesRead)
-      .split(/\r?\n/, 1)[0]
-      ?.trim();
+    const firstLine = buffer.toString("utf8", 0, bytesRead).split(/\r?\n/, 1)[0]?.trim();
     if (!firstLine) return null;
 
     const header: unknown = JSON.parse(firstLine);
-    if (typeof header !== "object" || header === null || Array.isArray(header))
-      return null;
+    if (typeof header !== "object" || header === null || Array.isArray(header)) return null;
 
     const cwd = Reflect.get(header, "cwd");
     if (typeof cwd !== "string" || cwd.trim().length === 0) return null;
@@ -531,17 +448,10 @@ function sessionProjectNameFromDirectory(dir: string): string {
  * I/O is serial: at most one directory handle and one filesystem operation are
  * active at a time. Abort rejects after the current operation and closes handles.
  */
-export async function getRecentSessions(
-  maxCount: number = 3,
-  signal?: AbortSignal,
-): Promise<RecentSession[]> {
+export async function getRecentSessions(maxCount: number = 3, signal?: AbortSignal): Promise<RecentSession[]> {
   signal?.throwIfAborted();
   if (maxCount === 0) return [];
-  const pendingDirs = [
-    ...new Set([getAgentPath("sessions"), getLegacyPiPath("sessions")]),
-  ]
-    .reverse()
-    .map((dir) => ({ dir, ancestors: [] as string[] }));
+  const pendingDirs = [...new Set([getAgentPath("sessions"), getLegacyPiPath("sessions")])].reverse().map((dir) => ({ dir, ancestors: [] as string[] }));
   const sessions: { filePath: string; dir: string; mtime: number }[] = [];
 
   while (pendingDirs.length > 0) {
@@ -567,10 +477,7 @@ export async function getRecentSessions(
           }
         } catch (error) {
           signal?.throwIfAborted();
-          logDiscoveryError(
-            `Failed to inspect session entry ${entryPath}`,
-            error,
-          );
+          logDiscoveryError(`Failed to inspect session entry ${entryPath}`, error);
         }
       }
     } catch (error) {
@@ -586,9 +493,7 @@ export async function getRecentSessions(
   const uniqueSessions: { name: string; mtime: number }[] = [];
   for (const session of sessions) {
     signal?.throwIfAborted();
-    const name =
-      (await readSessionHeaderProjectName(session.filePath, signal)) ??
-      sessionProjectNameFromDirectory(session.dir);
+    const name = (await readSessionHeaderProjectName(session.filePath, signal)) ?? sessionProjectNameFromDirectory(session.dir);
     signal?.throwIfAborted();
     if (seen.has(name)) continue;
     seen.add(name);
